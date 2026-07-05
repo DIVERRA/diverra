@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diverra.github.io/diverra/sitemap.xml
