@@ -799,8 +799,13 @@ p {
 .article-hero-image {
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: 14px;
+  border-radius: 12px;
   object-fit: cover;
+}
+
+.article-image-frame {
+  display: block;
+  margin: 48px 0;
 }
 
 .article-page-layout {
@@ -931,7 +936,7 @@ p {
 }
 
 .article-image {
-  margin: 1rem 0;
+  margin: 48px 0;
 }
 
 .article-image img {
@@ -939,7 +944,7 @@ p {
   width: 100%;
   height: auto;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   background: #fff;
 }
 
