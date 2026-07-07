@@ -797,7 +797,10 @@ p {
 }
 
 .article-hero-image {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  height: auto;
   aspect-ratio: 16 / 10;
   border-radius: 12px;
   object-fit: cover;
@@ -805,10 +808,16 @@ p {
 
 .article-image-frame {
   display: block;
+  width: 100%;
+  max-width: 100%;
   margin: 48px 0;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .article-image-frame .article-hero-image {
+  width: 100%;
+  max-width: 100%;
   height: auto;
   aspect-ratio: auto;
 }
