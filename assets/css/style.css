@@ -808,6 +808,11 @@ p {
   margin: 48px 0;
 }
 
+.article-image-frame .article-hero-image {
+  height: auto;
+  aspect-ratio: auto;
+}
+
 .article-page-layout {
   margin-top: 1rem;
 }
