@@ -39,6 +39,16 @@ a {
   text-decoration: none;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -203,6 +213,182 @@ a {
 
 .hero-overlay .eyebrow {
   color: #fff;
+}
+
+.home-page .site-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(184, 155, 97, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+}
+
+.home-page .header-inner {
+  width: min(1320px, calc(100% - 40px));
+  min-height: 88px;
+  padding: 0.8rem 0;
+}
+
+.home-page .diverra-logo {
+  gap: 0.7rem;
+  color: #5e5244;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.16em;
+}
+
+.home-page .diverra-logo span:last-child {
+  display: grid;
+  gap: 0.05rem;
+  line-height: 1.1;
+}
+
+.home-page .diverra-logo strong {
+  font-size: clamp(1.25rem, 2.8vw, 2rem);
+  font-weight: 500;
+}
+
+.home-page .diverra-logo small {
+  color: #7d705f;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: clamp(0.65rem, 1.5vw, 0.92rem);
+  letter-spacing: 0.12em;
+}
+
+.home-page .logo-mark {
+  position: relative;
+  width: 2.55rem;
+  height: 2.55rem;
+  border: 0;
+  border-radius: 999px;
+  color: var(--gold);
+  background: radial-gradient(circle, transparent 0 34%, currentColor 35% 38%, transparent 39%);
+}
+
+.home-page .logo-mark::before,
+.home-page .logo-mark::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: repeating-conic-gradient(currentColor 0 4deg, transparent 4deg 14deg);
+  content: "";
+}
+
+.home-page .logo-mark::after {
+  inset: 0.52rem;
+  background: #fff;
+}
+
+.home-page .nav-toggle {
+  border-color: rgba(94, 82, 68, 0.22);
+  color: #5e5244;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.home-page .site-nav {
+  border-color: rgba(184, 155, 97, 0.18);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 18px 42px rgba(94, 82, 68, 0.12);
+}
+
+.home-page .site-nav a {
+  color: #191714;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.home-page .site-nav a:hover,
+.home-page .site-nav a:focus-visible {
+  color: #b6861b;
+  background: rgba(184, 155, 97, 0.1);
+}
+
+.home-page .site-nav a[aria-current="page"],
+.home-page .site-nav a:first-child {
+  color: #c18f1f;
+}
+
+.home-page .nav-search {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.diverra-home-hero {
+  position: relative;
+  padding: 0;
+  background: #fff;
+}
+
+.diverra-hero-media {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #f6efe2;
+}
+
+.diverra-hero-media picture,
+.diverra-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.diverra-hero-media img {
+  min-height: 100svh;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.diverra-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0 92px, rgba(255, 255, 255, 0) 210px),
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.34) 30%, rgba(255, 255, 255, 0) 58%);
+  pointer-events: none;
+}
+
+.diverra-hero-content {
+  position: absolute;
+  left: 50%;
+  top: 63.5%;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  width: min(320px, calc(100% - 40px));
+  padding: 0;
+  color: #554a3d;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.diverra-hero-content::before {
+  content: none;
+}
+
+.diverra-hero-content .hero-actions {
+  justify-content: center;
+  margin-top: 0;
+}
+
+.diverra-hero-content .button.primary {
+  border-color: rgba(129, 87, 62, 0.16);
+  color: #fff;
+  background: #c7a198;
+  box-shadow: 0 16px 34px rgba(94, 82, 68, 0.16);
+}
+
+.diverra-hero-content .button.secondary {
+  border-color: rgba(94, 82, 68, 0.22);
+  color: #5e5244;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.diverra-home-hero .home-hero {
+  position: relative;
+  z-index: 3;
 }
 
 .hero-side {
@@ -1200,5 +1386,60 @@ p {
   .article-body,
   .sidebar-box {
     padding: 1.6rem;
+  }
+}
+
+@media (min-width: 720px) {
+  .home-page .site-nav {
+    gap: clamp(0.7rem, 1.6vw, 1.8rem);
+    max-width: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .home-page .site-nav a {
+    padding: 0.45rem 0;
+    font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+    white-space: nowrap;
+  }
+
+  .home-page .nav-search {
+    min-width: 1.6rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 719px) {
+  .home-page .header-inner {
+    width: min(100% - 28px, 560px);
+    min-height: 76px;
+  }
+
+  .home-page .diverra-logo {
+    letter-spacing: 0.1em;
+  }
+
+  .home-page .logo-mark {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .diverra-hero-media,
+  .diverra-hero-media img {
+    min-height: 760px;
+  }
+
+  .diverra-hero-media img {
+    object-position: center top;
+  }
+
+  .diverra-hero-content {
+    top: 66%;
+    width: min(240px, calc(100% - 48px));
+  }
+
+  .diverra-hero-content .button.primary {
+    width: 100%;
+    justify-content: center;
   }
 }

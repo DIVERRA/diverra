@@ -11,12 +11,12 @@
   <meta property="og:title" content="旅するマネーノート｜海外旅行のお金で損しないための情報メディア">
   <meta property="og:description" content="海外旅行のお金で損しないために、外貨両替、eSIM、クレジットカード、旅行準備を初心者にもやさしくまとめる女性向け旅行メディアです。">
   <meta property="og:url" content="https://diverra.github.io/diverra/">
-  <meta property="og:image" content="https://diverra.github.io/diverra/ogp.jpg">
+  <meta property="og:image" content="https://diverra.github.io/diverra/assets/images/diverra-sacred-temple-river-hero.webp">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="旅するマネーノート｜海外旅行のお金で損しないための情報メディア">
   <meta name="twitter:description" content="海外旅行のお金で損しないために、外貨両替、eSIM、クレジットカード、旅行準備を初心者にもやさしくまとめる女性向け旅行メディアです。">
-  <meta name="twitter:image" content="https://diverra.github.io/diverra/ogp.jpg">
+  <meta name="twitter:image" content="https://diverra.github.io/diverra/assets/images/diverra-sacred-temple-river-hero.webp">
   <link rel="stylesheet" href="assets/css/style.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNVRMBY4SL"></script>
@@ -29,37 +29,43 @@
 </script>
 
 </head>
-<body>
+<body class="home-page">
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="index.html"><span class="logo-mark">T</span><span>旅するマネーノート</span></a>
+      <a class="logo diverra-logo" href="index.html" aria-label="DIVERRA ホームへ">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span><strong>DIVERRA</strong><small>神聖な旅の始まり。</small></span>
+      </a>
       <button class="nav-toggle" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span></button>
       <nav class="site-nav" aria-label="グローバルナビ">
-        <a href="#countries">人気の国</a>
-        <a href="#popular">人気記事</a>
-        <a href="#roadmap">初めての海外旅行</a>
-        <a href="#latest">最新記事</a>
-        <a href="#about">About</a>
+        <a href="index.html">HOME</a>
+        <a href="thailand/index.html">タイ旅行ガイド</a>
+        <a href="exchange/index.html">両替・お金のこと</a>
         <a href="travel-prep/index.html">旅行準備</a>
+        <a href="reports/index.html">ブログ</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+        <a class="nav-search" href="#latest" aria-label="最新記事へ">⌕</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container portal-hero home-hero">
-        <div class="hero-feature">
-          <img src="assets/images/hero-travel-money.png" alt="パスポート、スマートフォン、外貨、カードが並ぶ海外旅行準備のイメージ">
-          <div class="hero-overlay">
-            <p class="eyebrow">Travel money note</p>
-            <h1>旅するマネーノート</h1>
-            <p class="lead">海外旅行のお金で損しないための情報メディア</p>
-            <div class="hero-actions">
-              <a class="button primary" href="#roadmap">旅行準備を始める</a>
-              <a class="button secondary" href="#popular">人気記事を見る</a>
-            </div>
+    <section class="hero diverra-home-hero">
+      <div class="diverra-hero-media">
+        <picture>
+          <source srcset="assets/images/diverra-sacred-temple-river-hero.webp" type="image/webp">
+          <img src="assets/images/diverra-sacred-temple-river-hero.webp" alt="DIVERRA 神聖な旅の始まりを表現したタイの寺院と川のヒーロー画像" width="1536" height="1024" loading="eager" decoding="async">
+        </picture>
+        <div class="diverra-hero-shade" aria-hidden="true"></div>
+        <div class="diverra-hero-content">
+          <h1 class="sr-only">DIVERRA 神聖な旅の始まり。</h1>
+          <div class="hero-actions">
+            <a class="button primary" href="#latest">新着記事を読む</a>
           </div>
         </div>
+      </div>
+      <div class="container portal-hero home-hero">
         <aside class="hero-side diary-note" aria-label="サイトの注目ポイント">
           <p class="eyebrow">Today memo</p>
           <h2>旅前のお金、ここからゆるく確認。</h2>
