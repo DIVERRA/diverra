@@ -1417,6 +1417,71 @@ p {
   }
 }
 
+@media (max-width: 959px) {
+  .home-page .site-header {
+    position: sticky;
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .home-page .header-inner {
+    min-height: 76px;
+  }
+
+  .home-page .nav-toggle {
+    display: inline-grid;
+  }
+
+  .home-page .site-nav {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: calc(100% + 0.5rem);
+    display: none;
+    max-width: none;
+    padding: 0.8rem;
+    border: 1px solid rgba(184, 155, 97, 0.18);
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 18px 42px rgba(94, 82, 68, 0.12);
+  }
+
+  .home-page .site-nav.is-open {
+    display: grid;
+  }
+
+  .home-page .site-nav a {
+    padding: 0.72rem 0.78rem;
+    font-size: 0.86rem;
+  }
+
+  .home-page .nav-search {
+    width: 100%;
+    height: 2.75rem;
+    justify-content: start;
+    padding: 0.72rem 0.78rem;
+  }
+
+  .diverra-hero-media {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .diverra-hero-media picture,
+  .diverra-hero-media img {
+    height: auto;
+    min-height: 0;
+  }
+
+  .diverra-hero-media img {
+    aspect-ratio: 1536 / 906;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .diverra-hero-shade {
+    display: none;
+  }
+}
+
 @media (max-width: 719px) {
   .home-page .header-inner {
     width: min(100% - 28px, 560px);
@@ -1430,15 +1495,6 @@ p {
   .home-page .logo-mark {
     width: 2.25rem;
     height: 2.25rem;
-  }
-
-  .diverra-hero-media,
-  .diverra-hero-media img {
-    min-height: 760px;
-  }
-
-  .diverra-hero-media img {
-    object-position: center top;
   }
 
   .diverra-hero-content {
