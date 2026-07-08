@@ -2,15 +2,17 @@
   --pink: #e7a8b5;
   --pink-soft: #fff4f6;
   --pink-deep: #c96c82;
-  --cream: #f6f6f5;
-  --beige: #ebeae9;
-  --gold: #b89b61;
+  --cream: #fbf7ef;
+  --beige: #f2eadb;
+  --gold: #b8944f;
+  --green: #1f6b57;
+  --green-soft: #edf6f1;
   --navy: #1f2f60;
-  --ink: #202020;
-  --muted: #6f7076;
-  --line: #ebe6df;
+  --ink: #28241f;
+  --muted: #68635c;
+  --line: #e8dfd1;
   --white: #ffffff;
-  --shadow: 0 18px 42px rgba(31, 47, 96, 0.07);
+  --shadow: 0 18px 44px rgba(68, 56, 38, 0.08);
 }
 
 * {
@@ -347,6 +349,39 @@ a {
   background: #fff;
 }
 
+.home-page main {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page .diverra-home-hero {
+  order: 1;
+}
+
+.home-page #roadmap {
+  order: 2;
+}
+
+.home-page #popular {
+  order: 3;
+}
+
+.home-page #countries {
+  order: 4;
+}
+
+.home-page .compact-themes {
+  order: 5;
+}
+
+.home-page #latest {
+  order: 6;
+}
+
+.home-page #about {
+  order: 7;
+}
+
 .diverra-hero-media {
   position: relative;
   min-height: 100svh;
@@ -551,23 +586,31 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.9rem;
-  padding: 0.75rem 1.25rem;
+  min-height: 3.1rem;
+  padding: 0.82rem 1.35rem;
   border: 1px solid transparent;
-  border-radius: 0;
-  font-weight: 800;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .button.primary {
   color: #fff;
-  background: var(--navy);
-  box-shadow: none;
+  background: linear-gradient(135deg, var(--gold), #9d7a38);
+  box-shadow: 0 14px 28px rgba(157, 122, 56, 0.2);
 }
 
 .button.secondary {
-  color: var(--navy);
+  color: var(--green);
   border-color: var(--line);
   background: rgba(255, 255, 255, 0.92);
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(68, 56, 38, 0.12);
 }
 
 .quick-search {
@@ -605,19 +648,19 @@ p {
   min-height: 2.3rem;
   padding: 0.45rem 0.85rem;
   border: 1px solid var(--line);
-  border-radius: 0;
-  color: var(--navy);
+  border-radius: 999px;
+  color: var(--green);
   background: var(--white);
   font-size: 0.9rem;
   font-weight: 800;
 }
 
 .section {
-  padding: 3.2rem 0;
+  padding: clamp(3.6rem, 7vw, 5.8rem) 0;
 }
 
 .soft-band {
-  background: rgba(246, 246, 245, 0.72);
+  background: linear-gradient(180deg, rgba(251, 247, 239, 0.82), rgba(255, 255, 255, 0.88));
 }
 
 .section-head {
@@ -690,8 +733,8 @@ p {
 
 .destination-grid {
   display: grid;
-  gap: 0;
-  border-top: 1px solid var(--line);
+  gap: 0.9rem;
+  border-top: 0;
 }
 
 .destination-card {
@@ -699,12 +742,11 @@ p {
   display: grid;
   gap: 0.18rem;
   min-height: auto;
-  padding: 1rem 0 1rem 3.25rem;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  padding: 1rem 1rem 1rem 3.25rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 28px rgba(68, 56, 38, 0.05);
 }
 
 .country-grid {
@@ -713,7 +755,7 @@ p {
 
 .destination-card::before {
   position: absolute;
-  left: 0;
+  left: 1rem;
   top: 1.05rem;
   color: var(--gold);
   font-family: Montserrat, Arial, sans-serif;
@@ -730,7 +772,7 @@ p {
 }
 
 .destination-card strong {
-  color: var(--navy);
+  color: var(--green);
   font-size: 1.42rem;
   line-height: 1.2;
 }
@@ -745,18 +787,16 @@ p {
 }
 
 .article-card {
-  border-radius: 0;
+  border-radius: 18px;
 }
 
 .roadmap-panel,
 .about-panel {
-  padding: 1.35rem 0;
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  padding: clamp(1.35rem, 3vw, 2.2rem);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
 }
 
 .roadmap-lead {
@@ -766,25 +806,24 @@ p {
 
 .roadmap-grid {
   display: grid;
-  gap: 0;
+  gap: 0.9rem;
   margin-top: 1.2rem;
-  border-top: 1px solid var(--line);
+  border-top: 0;
 }
 
 .roadmap-step {
   position: relative;
   display: grid;
   gap: 0.45rem;
-  padding: 1.1rem 0 1.1rem 3.25rem;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
+  padding: 1.1rem 1rem 1.1rem 3.5rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff, var(--green-soft));
 }
 
 .roadmap-step span {
   position: absolute;
-  left: 0;
+  left: 1rem;
   top: 1.15rem;
   display: inline-flex;
   width: auto;
@@ -837,11 +876,10 @@ p {
 .news-card {
   display: grid;
   gap: 0.5rem;
-  padding: 1.05rem 0;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .grid {
@@ -860,9 +898,10 @@ p {
   min-height: 100%;
   padding: 1.2rem 1.2rem 1.2rem 1.35rem;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.94);
-  box-shadow: none;
+  box-shadow: 0 12px 28px rgba(68, 56, 38, 0.05);
+  overflow: hidden;
 }
 
 .card::before {
@@ -876,9 +915,9 @@ p {
 }
 
 .card:hover {
-  transform: translateX(2px);
+  transform: translateY(-2px);
   transition: transform 160ms ease, border-color 160ms ease;
-  border-color: rgba(31, 47, 96, 0.24);
+  border-color: rgba(31, 107, 87, 0.24);
 }
 
 .card-kicker {
@@ -907,9 +946,9 @@ p {
 .tag {
   display: inline-flex;
   padding: 0.2rem 0.6rem;
-  border-radius: 0;
-  color: var(--navy);
-  background: var(--pink-soft);
+  border-radius: 999px;
+  color: var(--green);
+  background: var(--green-soft);
   font-weight: 800;
 }
 
@@ -1500,5 +1539,57 @@ p {
   .diverra-hero-content {
     top: 66.2%;
     width: min(240px, calc(100% - 48px));
+  }
+}
+
+.home-page .roadmap-panel,
+.home-page .about-panel {
+  padding: clamp(1.35rem, 3vw, 2.2rem);
+}
+
+.home-page .article-grid,
+.home-page .category-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+}
+
+.home-page .section-head h2 {
+  color: var(--green);
+}
+
+@media (max-width: 719px) {
+  body {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: clamp(1.55rem, 8vw, 2rem);
+  }
+
+  h3 {
+    font-size: 1.08rem;
+  }
+
+  .section {
+    padding: 3.3rem 0;
+  }
+
+  .section-head {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .button,
+  .text-link {
+    width: 100%;
+    min-height: 3.2rem;
+  }
+
+  .article-body,
+  .article-header,
+  .toc-box,
+  .share-box,
+  .post-nav,
+  .sidebar-box {
+    border-radius: 16px;
   }
 }
