@@ -377,28 +377,32 @@ a {
   order: 1;
 }
 
-.home-page #roadmap {
+.home-page .brand-intro {
   order: 2;
 }
 
-.home-page #popular {
+.home-page #roadmap {
   order: 3;
 }
 
-.home-page #countries {
+.home-page #popular {
   order: 4;
 }
 
-.home-page .compact-themes {
+.home-page #countries {
   order: 5;
 }
 
-.home-page #latest {
+.home-page .compact-themes {
   order: 6;
 }
 
-.home-page #about {
+.home-page #latest {
   order: 7;
+}
+
+.home-page #about {
+  order: 8;
 }
 
 .diverra-hero-media {
@@ -2136,5 +2140,287 @@ select:focus-visible {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* DIVERRA Ver.3 IA and brand experience */
+.home-brand-copy {
+  top: 54%;
+  left: max(1.4rem, calc((100vw - 1180px) / 2));
+  justify-items: start;
+  width: min(560px, calc(100% - 40px));
+  color: #4e4438;
+  text-align: left;
+  transform: translateY(-50%);
+}
+
+.home-brand-copy .eyebrow {
+  margin-bottom: 0.8rem;
+  color: var(--color-accent);
+}
+
+.home-brand-copy h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 9vw, 6.4rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.brand-tagline {
+  margin-top: 0.15rem;
+  color: var(--color-secondary);
+  font-size: clamp(1.28rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.home-brand-copy .lead {
+  max-width: 34rem;
+  color: #3c352d;
+  font-weight: 600;
+}
+
+.home-brand-copy .hero-actions {
+  margin-top: 1.7rem;
+}
+
+.home-brand-copy .button.secondary {
+  color: var(--color-primary);
+  border-color: rgba(31, 107, 87, 0.22);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 34px rgba(68, 56, 38, 0.08);
+}
+
+.guide-feature {
+  display: grid;
+  gap: 1rem;
+}
+
+.guide-feature-main {
+  min-height: 100%;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+}
+
+.guide-feature-main h3 {
+  font-size: clamp(1.45rem, 4vw, 2rem);
+}
+
+.guide-feature-side,
+.guide-steps {
+  display: grid;
+  gap: 1rem;
+}
+
+.theme-guide-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+.guide-page-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-page-hero > .line-icon {
+  margin-bottom: 1rem;
+}
+
+.guide-page-hero::after {
+  position: absolute;
+  right: -5rem;
+  bottom: -5rem;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid rgba(184, 148, 79, 0.18);
+  border-radius: 50%;
+  content: "";
+}
+
+.inline-head {
+  margin-top: clamp(2rem, 5vw, 3.4rem);
+}
+
+.line-icon {
+  position: relative;
+  display: inline-grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  place-items: center;
+  border: 1.8px solid currentColor;
+  border-radius: 50%;
+  color: var(--color-primary);
+  background: rgba(237, 246, 241, 0.74);
+}
+
+.line-icon::before,
+.line-icon::after {
+  position: absolute;
+  display: block;
+  content: "";
+}
+
+.icon-exchange::before {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1.7px solid currentColor;
+  border-radius: 50%;
+}
+
+.icon-exchange::after {
+  width: 1.45rem;
+  height: 0.55rem;
+  border-top: 1.7px solid currentColor;
+  border-bottom: 1.7px solid currentColor;
+}
+
+.icon-cash::before {
+  width: 1.35rem;
+  height: 0.9rem;
+  border: 1.7px solid currentColor;
+  border-radius: 4px;
+}
+
+.icon-cash::after {
+  width: 0.35rem;
+  height: 0.35rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.icon-atm::before {
+  width: 1.1rem;
+  height: 1.35rem;
+  border: 1.7px solid currentColor;
+  border-radius: 4px;
+}
+
+.icon-atm::after {
+  top: 0.72rem;
+  width: 0.72rem;
+  height: 0.15rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.icon-card::before {
+  width: 1.45rem;
+  height: 0.98rem;
+  border: 1.7px solid currentColor;
+  border-radius: 5px;
+}
+
+.icon-card::after {
+  top: 1.05rem;
+  left: 0.62rem;
+  width: 0.62rem;
+  height: 0.12rem;
+  background: currentColor;
+}
+
+.icon-sim::before {
+  width: 1rem;
+  height: 1.32rem;
+  border: 1.7px solid currentColor;
+  border-radius: 4px;
+  clip-path: polygon(0 0, 72% 0, 100% 24%, 100% 100%, 0 100%);
+}
+
+.icon-sim::after {
+  width: 0.52rem;
+  height: 0.52rem;
+  border: 1.4px solid currentColor;
+  border-radius: 2px;
+}
+
+.icon-bag::before {
+  width: 1.28rem;
+  height: 1rem;
+  border: 1.7px solid currentColor;
+  border-radius: 4px;
+}
+
+.icon-bag::after {
+  top: 0.66rem;
+  width: 0.64rem;
+  height: 0.42rem;
+  border: 1.6px solid currentColor;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+.icon-map::before {
+  width: 1.4rem;
+  height: 1.05rem;
+  border: 1.7px solid currentColor;
+  border-radius: 4px;
+}
+
+.icon-map::after {
+  width: 0.1rem;
+  height: 1.05rem;
+  background: currentColor;
+  box-shadow: 0.42rem 0 0 currentColor, -0.42rem 0 0 currentColor;
+}
+
+.icon-note::before {
+  width: 1.1rem;
+  height: 1.35rem;
+  border: 1.7px solid currentColor;
+  border-radius: 4px;
+}
+
+.icon-note::after {
+  top: 0.82rem;
+  width: 0.62rem;
+  height: 0.12rem;
+  background: currentColor;
+  box-shadow: 0 0.32rem 0 currentColor;
+}
+
+.card .line-icon,
+.article-card .line-icon {
+  margin-bottom: 0.15rem;
+}
+
+.article-cta {
+  background:
+    radial-gradient(circle at right top, rgba(184, 148, 79, 0.16), transparent 14rem),
+    var(--color-background);
+}
+
+.article-cta .button,
+.post-nav a,
+.link-list a {
+  min-height: 3rem;
+}
+
+@media (min-width: 860px) {
+  .guide-feature {
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  }
+
+  .guide-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 959px) {
+  .home-brand-copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 3;
+    width: min(100% - 32px, 620px);
+    margin: -1px auto 0;
+    padding: 1.45rem 0 0;
+    color: var(--color-text);
+    transform: none;
+  }
+
+  .home-brand-copy h1 {
+    font-size: clamp(2.65rem, 14vw, 4.8rem);
+  }
+
+  .home-brand-copy .hero-actions {
+    display: grid;
   }
 }
