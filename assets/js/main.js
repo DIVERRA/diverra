@@ -26,22 +26,42 @@ const revealTargets = document.querySelectorAll(
   ".card, .news-card, .article-header, .article-image, .article-cta, .post-nav a"
 );
 
-if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.documentElement.classList.add("js-reveal-enabled");
-  revealTargets.forEach((target) => target.classList.add("reveal"));
+const articleContentTargets = document.querySelectorAll(
+  ".content-layout, .article-page-layout, .article-body, .sidebar-box, .toc-box, .share-box, .post-nav"
+);
 
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    },
-    { rootMargin: "0px 0px -12% 0px", threshold: 0.08 }
-  );
+const keepArticleContentVisible = () => {
+  articleContentTargets.forEach((target) => {
+    target.classList.remove("reveal");
+    target.classList.add("is-visible");
+  });
+};
 
-  revealTargets.forEach((target) => revealObserver.observe(target));
-} else {
+keepArticleContentVisible();
+
+try {
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js-reveal-enabled");
+    revealTargets.forEach((target) => target.classList.add("reveal"));
+    keepArticleContentVisible();
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.08 }
+    );
+
+    revealTargets.forEach((target) => revealObserver.observe(target));
+  } else {
+    revealTargets.forEach((target) => target.classList.add("is-visible"));
+  }
+} catch (error) {
+  document.documentElement.classList.remove("js-reveal-enabled");
   revealTargets.forEach((target) => target.classList.add("is-visible"));
+  keepArticleContentVisible();
 }
