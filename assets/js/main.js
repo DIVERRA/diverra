@@ -23,10 +23,11 @@ document.querySelectorAll(".js-copy-link").forEach((button) => {
 });
 
 const revealTargets = document.querySelectorAll(
-  ".section, .card, .news-card, .article-header, .article-body, .sidebar-box"
+  ".card, .news-card, .article-header, .article-image, .article-cta, .post-nav a"
 );
 
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("js-reveal-enabled");
   revealTargets.forEach((target) => target.classList.add("reveal"));
 
   const revealObserver = new IntersectionObserver(
