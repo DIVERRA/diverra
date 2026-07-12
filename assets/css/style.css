@@ -1334,6 +1334,21 @@ p {
   opacity: 0;
 }
 
+.contact-complete-section {
+  display: grid;
+  place-items: center;
+}
+
+.contact-complete-card {
+  width: min(100%, 46rem);
+  text-align: center;
+}
+
+.contact-complete-card .hero-actions {
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+
 .site-footer {
   margin-top: 2rem;
   padding: 2rem 0;
