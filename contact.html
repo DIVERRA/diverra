@@ -39,21 +39,27 @@
 </header>
   <main class="container">
     <p class="breadcrumb"><a href="index.html">ホーム</a> / お問い合わせ</p>
-    <section class="page-hero"><p class="eyebrow">Contact</p><h1>お問い合わせ</h1><p class="lead">記事のご相談、掲載内容の修正依頼、タイアップのご相談はこちらからお送りください。</p></section>
+    <section class="page-hero"><p class="eyebrow">Contact</p><h1>お問い合わせ</h1><p class="lead">記事内容に関するご意見や、広告掲載・タイアップ・取材などのご相談はこちらからお送りください。</p></section>
     <section class="section content-layout">
       <article class="article-body">
         <h2>メッセージを送る</h2>
-        <p>掲載内容の修正依頼、広告・タイアップのご相談、記事テーマのご提案などを受け付けています。</p>
-        <form class="form js-formspree-form" action="https://formspree.io/f/xykqrdbz" method="POST" novalidate>
+        <p>DIVERRAへのお問い合わせありがとうございます。</p>
+        <p>記事内容に関するご意見・ご感想、サイトについてのご連絡のほか、広告掲載・タイアップ・取材・サービス紹介などのご相談も受け付けております。</p>
+        <p>下記フォームよりお問い合わせください。</p>
+        <form id="contact-form" class="form js-formspree-form" action="https://formspree.io/f/xykqrdbz" method="POST" novalidate>
           <input type="hidden" name="_subject" value="DIVERRA お問い合わせ">
           <input type="hidden" name="_next" value="https://diverra.github.io/diverra/contact-complete.html">
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="form-honeypot" aria-hidden="true">
-          <label>お名前 <span class="required">必須</span><input type="text" name="name" placeholder="山田 花子" autocomplete="name" required></label>
-          <label>メールアドレス <span class="required">必須</span><input type="email" name="email" placeholder="hello@example.com" autocomplete="email" required></label>
-          <label>お問い合わせ内容 <span class="required">必須</span><select name="topic" required><option value="">選択してください</option><option>記事内容について</option><option>掲載内容の修正依頼</option><option>広告・タイアップについて</option><option>その他</option></select></label>
-          <label>本文 <span class="required">必須</span><textarea name="message" rows="6" placeholder="お問い合わせ内容を入力してください" required minlength="10"></textarea></label>
-          <p class="form-help">通常2〜3営業日以内を目安に確認します。営業メールの場合も、内容が分かるよう具体的にご記入ください。</p>
-          <div class="form-status" data-form-status role="status" aria-live="polite"></div>
+          <label class="sr-only" for="contact-gotcha">この項目は入力しないでください</label>
+          <input id="contact-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="form-honeypot" aria-hidden="true">
+          <label for="contact-type">お問い合わせ種別 <span class="required">必須</span><select id="contact-type" name="contact_type" required><option value="">選択してください</option><option>広告掲載・タイアップについて</option><option>取材・メディア掲載について</option><option>記事内容について</option><option>サイト・サービスについて</option><option>その他</option></select></label>
+          <label for="contact-name">お名前 <span class="required">必須</span><input id="contact-name" type="text" name="name" placeholder="山田 花子" autocomplete="name" required></label>
+          <label for="contact-company">会社名・団体名 <span class="required optional">任意</span><input id="contact-company" type="text" name="company" placeholder="株式会社〇〇" autocomplete="organization"></label>
+          <label for="contact-email">メールアドレス <span class="required">必須</span><input id="contact-email" type="email" name="email" placeholder="hello@example.com" autocomplete="email" required></label>
+          <label for="contact-website">Webサイト・サービスURL <span class="required optional">任意</span><input id="contact-website" type="url" name="website" placeholder="https://example.com" autocomplete="url"></label>
+          <label for="contact-subject">件名 <span class="required">必須</span><input id="contact-subject" type="text" name="subject" placeholder="お問い合わせの件名" required></label>
+          <label for="contact-message">お問い合わせ内容 <span class="required">必須</span><textarea id="contact-message" name="message" rows="7" placeholder="お問い合わせ内容を入力してください" required minlength="10"></textarea></label>
+          <p class="form-help">※広告掲載・タイアップ・取材・旅行関連サービスのご紹介など、企業・自治体・観光関連事業者様からのご相談も受け付けております。</p>
+          <div id="form-error" class="form-status" data-form-status role="status" aria-live="polite"></div>
           <button class="button primary" type="submit">お問い合わせを送信する</button>
         </form>
       </article>

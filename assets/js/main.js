@@ -23,8 +23,12 @@ document.querySelectorAll(".js-copy-link").forEach((button) => {
 });
 
 document.querySelectorAll(".js-formspree-form").forEach((form) => {
+  if (form.dataset.formspreeBound === "true") return;
+  form.dataset.formspreeBound = "true";
+
   const status = form.querySelector("[data-form-status]");
   const submitButton = form.querySelector('button[type="submit"]');
+  const endpoint = "https://formspree.io/f/xykqrdbz";
 
   const setStatus = (message, type = "info") => {
     if (!status) return;
@@ -34,9 +38,9 @@ document.querySelectorAll(".js-formspree-form").forEach((form) => {
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const endpoint = form.getAttribute("action") || "";
+    const action = form.getAttribute("action") || "";
 
-    if (!endpoint || !endpoint.startsWith("https://formspree.io/f/")) {
+    if (action !== endpoint) {
       setStatus("送信先の設定がまだ完了していません。FormspreeのフォームIDを設定してください。", "error");
       return;
     }
@@ -61,13 +65,16 @@ document.querySelectorAll(".js-formspree-form").forEach((form) => {
       });
 
       if (!response.ok) {
-        throw new Error("Form submission failed");
+        const data = await response.json().catch(() => null);
+        console.error("Formspree error:", data);
+        setStatus("送信できませんでした。入力内容を確認して、もう一度お試しください。", "error");
+        return;
       }
 
-      form.reset();
       window.location.href = "/diverra/contact-complete.html";
     } catch (error) {
-      setStatus("送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。", "error");
+      console.error("Contact form error:", error);
+      setStatus("通信エラーが発生しました。時間をおいて、もう一度お試しください。", "error");
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
