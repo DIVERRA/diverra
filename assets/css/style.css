@@ -2537,3 +2537,10 @@ select:focus-visible {
     border-radius: 22px;
   }
 }
+
+.contact-complete-card.about-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.85rem;
+  padding: clamp(1.8rem, 4vw, 3rem);
+}
