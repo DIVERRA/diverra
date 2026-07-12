@@ -36,7 +36,7 @@ document.querySelectorAll(".js-formspree-form").forEach((form) => {
     event.preventDefault();
     const endpoint = form.getAttribute("action") || "";
 
-    if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
+    if (!endpoint || !endpoint.startsWith("https://formspree.io/f/")) {
       setStatus("送信先の設定がまだ完了していません。FormspreeのフォームIDを設定してください。", "error");
       return;
     }
@@ -65,7 +65,7 @@ document.querySelectorAll(".js-formspree-form").forEach((form) => {
       }
 
       form.reset();
-      setStatus("送信ありがとうございました。内容を確認のうえ、必要に応じてご連絡します。", "success");
+      window.location.href = "/diverra/contact-complete.html";
     } catch (error) {
       setStatus("送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。", "error");
     } finally {
