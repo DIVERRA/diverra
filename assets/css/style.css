@@ -1290,6 +1290,46 @@ p {
   font: inherit;
 }
 
+.required {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.form-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.form-status {
+  min-height: 1.4rem;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.form-status[data-status="success"] {
+  color: var(--color-primary);
+}
+
+.form-status[data-status="error"] {
+  color: #b84040;
+}
+
+.form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 .site-footer {
   margin-top: 2rem;
   padding: 2rem 0;

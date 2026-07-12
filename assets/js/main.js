@@ -22,6 +22,61 @@ document.querySelectorAll(".js-copy-link").forEach((button) => {
   });
 });
 
+document.querySelectorAll(".js-formspree-form").forEach((form) => {
+  const status = form.querySelector("[data-form-status]");
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  const setStatus = (message, type = "info") => {
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.status = type;
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const endpoint = form.getAttribute("action") || "";
+
+    if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
+      setStatus("送信先の設定がまだ完了していません。FormspreeのフォームIDを設定してください。", "error");
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      setStatus("未入力の必須項目、または入力形式に誤りがあります。内容をご確認ください。", "error");
+      return;
+    }
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中...";
+    }
+    setStatus("送信しています。少しだけお待ちください。", "info");
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+      setStatus("送信ありがとうございました。内容を確認のうえ、必要に応じてご連絡します。", "success");
+    } catch (error) {
+      setStatus("送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。", "error");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "お問い合わせを送信する";
+      }
+    }
+  });
+});
+
 const revealTargets = document.querySelectorAll(
   ".card, .news-card, .article-header, .article-image, .article-cta, .post-nav a"
 );
