@@ -2544,3 +2544,26 @@ select:focus-visible {
   gap: 0.85rem;
   padding: clamp(1.8rem, 4vw, 3rem);
 }
+
+
+/* Balanced editorial title */
+.balanced-title {
+  max-width: none;
+  line-break: strict;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.balanced-title span {
+  display: block;
+}
+
+@media (min-width: 960px) {
+  .balanced-title span {
+    white-space: nowrap;
+  }
+
+  .prepare-title {
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+  }
+}
