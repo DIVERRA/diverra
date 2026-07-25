@@ -4034,16 +4034,16 @@ body.home-page.sample-home-page main {
 }
 
 body.home-page.sample-home-page .site-header {
-  align-items: center !important;
-  background: #fbf7ef !important;
-  border-bottom: 1px solid #ded4c3 !important;
+  align-items: flex-start !important;
+  background: #f4efe7 !important;
+  border-bottom: 2px solid #d9d1c2 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   display: flex !important;
   gap: 24px !important;
-  height: 86px !important;
-  justify-content: space-between !important;
-  padding: 0 clamp(24px, 5vw, 76px) !important;
+  height: 122px !important;
+  justify-content: flex-start !important;
+  padding: 5px 0 0 26px !important;
   position: relative !important;
   top: auto !important;
   width: 100% !important;
@@ -4051,38 +4051,38 @@ body.home-page.sample-home-page .site-header {
 }
 
 body.home-page.sample-home-page .brand {
-  align-items: center !important;
+  align-items: flex-start !important;
   color: #29251f !important;
   display: flex !important;
   flex: 0 0 auto !important;
-  gap: 13px !important;
-  min-width: 190px !important;
+  gap: 27px !important;
+  min-width: 0 !important;
 }
 
 body.home-page.sample-home-page .sunmark {
-  background:
-    linear-gradient(#b8944f 0 0) 50% 0 / 2px 100% no-repeat,
-    linear-gradient(90deg, #b8944f 0 0) 0 50% / 100% 2px no-repeat,
-    radial-gradient(circle, transparent 0 34%, #b8944f 35% 38%, transparent 39%) !important;
+  background: repeating-conic-gradient(from 0deg, #b8944f 0deg 3deg, transparent 3deg 7deg) !important;
   border: 0 !important;
   border-radius: 50% !important;
   box-shadow: none !important;
   color: #b8944f !important;
   display: inline-block !important;
-  height: 39px !important;
+  height: 82px !important;
   position: relative !important;
-  width: 39px !important;
+  width: 82px !important;
 }
 
 body.home-page.sample-home-page .sunmark::before,
 body.home-page.sample-home-page .sunmark::after {
-  background:
-    linear-gradient(45deg, transparent 47%, #b8944f 48% 52%, transparent 53%),
-    linear-gradient(-45deg, transparent 47%, #b8944f 48% 52%, transparent 53%) !important;
+  background: #f4efe7 !important;
   border-radius: inherit !important;
   content: "" !important;
-  inset: 0 !important;
+  inset: 13px !important;
   position: absolute !important;
+}
+
+body.home-page.sample-home-page .sunmark::after {
+  background: #f4efe7 !important;
+  inset: 21px !important;
 }
 
 body.home-page.sample-home-page .brand b,
@@ -4090,10 +4090,10 @@ body.home-page.sample-home-page .footer-mark strong {
   color: #29251f !important;
   display: block !important;
   font-family: Georgia, "Times New Roman", serif !important;
-  font-size: 26px !important;
+  font-size: 45px !important;
   font-weight: 500 !important;
-  letter-spacing: .14em !important;
-  line-height: 1.1 !important;
+  letter-spacing: .16em !important;
+  line-height: .96 !important;
 }
 
 body.home-page.sample-home-page .brand small,
@@ -4101,9 +4101,9 @@ body.home-page.sample-home-page .footer-mark small {
   color: #766c58 !important;
   display: block !important;
   font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif !important;
-  font-size: 11px !important;
-  letter-spacing: .16em !important;
-  margin-top: 3px !important;
+  font-size: 16px !important;
+  letter-spacing: .14em !important;
+  margin-top: 25px !important;
 }
 
 body.home-page.sample-home-page .site-header nav {
@@ -4117,26 +4117,16 @@ body.home-page.sample-home-page .site-header nav {
   letter-spacing: .06em !important;
 }
 
+body.home-page.sample-home-page .site-header nav,
 body.home-page.sample-home-page .header-cta {
-  background: transparent !important;
-  border: 1px solid #b8944f !important;
-  border-radius: 999px !important;
-  box-shadow: none !important;
-  color: #b8944f !important;
-  display: inline-flex !important;
-  flex: 0 0 auto !important;
-  font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  gap: 8px !important;
-  padding: 10px 18px !important;
+  display: none !important;
 }
 
 body.home-page.sample-home-page .hero {
   background: #3a3b32 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  height: min(720px, calc(100vh - 86px)) !important;
+  height: min(720px, calc(100vh - 122px)) !important;
   margin: 0 !important;
   min-height: 590px !important;
   overflow: hidden !important;
@@ -4156,10 +4146,10 @@ body.home-page.sample-home-page .hero > img {
 body.home-page.sample-home-page .hero-copy {
   color: #fff !important;
   left: clamp(24px, 8vw, 115px) !important;
-  max-width: 620px !important;
+  max-width: 840px !important;
   position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  top: clamp(18px, 2vw, 28px) !important;
+  transform: none !important;
   z-index: 2 !important;
 }
 
@@ -4167,10 +4157,21 @@ body.home-page.sample-home-page .hero h1 {
   color: #fff !important;
   font-family: Georgia, "Times New Roman", serif !important;
   font-size: clamp(46px, 6.4vw, 86px) !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   letter-spacing: .04em !important;
   line-height: 1.1 !important;
   margin: 0 0 24px !important;
+}
+
+body.home-page.sample-home-page .hero-copy p:not(.eyebrow) {
+  color: rgba(255, 255, 255, .9) !important;
+  font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif !important;
+  font-size: clamp(20px, 2.1vw, 28px) !important;
+  font-weight: 400 !important;
+  letter-spacing: .06em !important;
+  line-height: 1.85 !important;
+  margin: 0 0 64px !important;
+  max-width: 760px !important;
 }
 
 body.home-page.sample-home-page .eyebrow,
@@ -4179,6 +4180,51 @@ body.home-page.sample-home-page .country-card span,
 body.home-page.sample-home-page .article-layout aside span {
   font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif !important;
   letter-spacing: .16em !important;
+}
+
+body.home-page.sample-home-page .hero-copy .eyebrow {
+  color: #d7c39a !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  letter-spacing: .22em !important;
+  line-height: 1 !important;
+  margin: 0 0 40px !important;
+}
+
+body.home-page.sample-home-page .hero-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 28px !important;
+}
+
+body.home-page.sample-home-page .button {
+  align-items: center !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  font-family: "Hiragino Sans", "Yu Gothic", system-ui, sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  gap: 20px !important;
+  justify-content: center !important;
+  letter-spacing: .02em !important;
+  min-height: 104px !important;
+  min-width: 360px !important;
+  padding: 28px 56px !important;
+  transform: none !important;
+}
+
+body.home-page.sample-home-page .button.gold {
+  background: #b9964c !important;
+  border: 1px solid #b9964c !important;
+  color: #fff !important;
+}
+
+body.home-page.sample-home-page .button.ghost {
+  background: rgba(10, 20, 18, .12) !important;
+  border: 2px solid rgba(255, 255, 255, .62) !important;
+  color: #fff !important;
 }
 
 body.home-page.sample-home-page .feature-rail {
@@ -4261,32 +4307,88 @@ body.home-page.sample-home-page footer .footer-mark strong {
 
 @media (max-width: 640px) {
   body.home-page.sample-home-page .site-header {
-    height: auto !important;
-    padding: 16px 20px !important;
+    height: 16px !important;
+    min-height: 16px !important;
+    padding: 0 !important;
   }
 
-  body.home-page.sample-home-page .brand small,
+  body.home-page.sample-home-page .brand {
+    display: none !important;
+  }
+
+  body.home-page.sample-home-page .sunmark {
+    height: 56px !important;
+    width: 56px !important;
+  }
+
+  body.home-page.sample-home-page .sunmark::before {
+    inset: 9px !important;
+  }
+
+  body.home-page.sample-home-page .sunmark::after {
+    inset: 15px !important;
+  }
+
+  body.home-page.sample-home-page .brand b {
+    font-size: 31px !important;
+  }
+
+  body.home-page.sample-home-page .brand small {
+    display: block !important;
+    font-size: 11px !important;
+    margin-top: 13px !important;
+  }
+
   body.home-page.sample-home-page .header-cta {
     display: none !important;
   }
 
   body.home-page.sample-home-page .hero {
-    height: auto !important;
-    min-height: 0 !important;
+    height: calc(100svh - 16px) !important;
+    min-height: 575px !important;
   }
 
   body.home-page.sample-home-page .hero > img {
-    aspect-ratio: 16 / 13 !important;
     display: block !important;
-    height: auto !important;
+    height: 100% !important;
     object-position: 58% center !important;
   }
 
   body.home-page.sample-home-page .hero-copy {
-    inset: auto 20px 36px !important;
+    inset: clamp(104px, 18vh, 160px) 20px auto !important;
     max-width: none !important;
     position: absolute !important;
     transform: none !important;
+  }
+
+  body.home-page.sample-home-page .hero-copy .eyebrow {
+    font-size: 12px !important;
+    margin-bottom: 18px !important;
+  }
+
+  body.home-page.sample-home-page .hero h1 {
+    font-size: clamp(33px, 10.8vw, 40px) !important;
+    line-height: 1.28 !important;
+    margin-bottom: 22px !important;
+  }
+
+  body.home-page.sample-home-page .hero-copy p:not(.eyebrow) {
+    font-size: clamp(12px, 3.7vw, 15px) !important;
+    line-height: 1.9 !important;
+    margin-bottom: 24px !important;
+  }
+
+  body.home-page.sample-home-page .hero-actions {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  body.home-page.sample-home-page .button {
+    font-size: 15px !important;
+    min-height: 54px !important;
+    min-width: 0 !important;
+    padding: 14px 18px !important;
+    width: 100% !important;
   }
 
   body.home-page.sample-home-page .country-grid {
