@@ -659,3 +659,5 @@ main.container > .breadcrumb {
   color: #b8944f;
   background-color: rgba(184, 148, 79, 0.11);
 }
+.site-header .site-nav a{font-weight:500}
+.site-header .site-nav a:hover{color:#26211b;background:transparent;transform:none;box-shadow:none}
