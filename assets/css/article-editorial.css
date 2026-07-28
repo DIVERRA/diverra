@@ -18,6 +18,11 @@ body {
   color: var(--article-ink);
 }
 
+.site-header .site-nav a {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 main.container {
   width: 100%;
   max-width: none;
