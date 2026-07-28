@@ -1,0 +1,16 @@
+.featured-thumbnail {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+}
+
+.featured-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.featured-thumbnail:hover img {
+  transform: scale(1.02);
+}

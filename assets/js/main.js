@@ -127,3 +127,54 @@ try {
   revealTargets.forEach((target) => target.classList.add("is-visible"));
   keepArticleContentVisible();
 }
+
+/* DIVERRA latest featured article */
+document.addEventListener("DOMContentLoaded", async () => {
+  const section = document.querySelector(".article-sample");
+  if (!section) return;
+
+  try {
+    const response = await fetch("assets/data/articles.json", {
+      cache: "no-store"
+    });
+    if (!response.ok) return;
+
+    const articles = await response.json();
+    if (!Array.isArray(articles) || articles.length === 0) return;
+
+    const latest = [...articles].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    )[0];
+
+    const title = section.querySelector(".article-head h2");
+    const description = section.querySelector(".article-head p");
+    const meta = section.querySelectorAll(".meta span");
+    const currentVisual = section.querySelector(".article-visual");
+
+    if (title) title.innerHTML = latest.titleHtml || latest.title;
+    if (description) description.textContent = latest.description;
+    if (meta[0]) meta[0].textContent = latest.category;
+    if (meta[1]) meta[1].textContent = latest.dateLabel;
+    if (meta[2]) meta[2].textContent = latest.readingTime;
+
+    if (currentVisual) {
+      const thumbnailLink = document.createElement("a");
+      thumbnailLink.className = "article-visual featured-thumbnail";
+      thumbnailLink.href = latest.url;
+      thumbnailLink.setAttribute(
+        "aria-label",
+        `${latest.title}の記事を読む`
+      );
+
+      const thumbnail = document.createElement("img");
+      thumbnail.src = latest.thumbnail;
+      thumbnail.alt = latest.alt || latest.title;
+      thumbnail.loading = "lazy";
+
+      thumbnailLink.appendChild(thumbnail);
+      currentVisual.replaceWith(thumbnailLink);
+    }
+  } catch (error) {
+    console.error("最新記事を取得できませんでした。", error);
+  }
+});
