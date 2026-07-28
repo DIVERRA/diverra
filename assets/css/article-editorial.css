@@ -661,3 +661,5 @@ main.container > .breadcrumb {
 }
 .site-header .site-nav a{font-weight:500}
 .site-header .site-nav a:hover{color:#26211b;background:transparent;transform:none;box-shadow:none}
+
+.site-header .site-nav a{font-weight:500!important}.site-header .site-nav a:hover{color:#26211b!important;background:transparent!important;transform:none!important;box-shadow:none!important}
