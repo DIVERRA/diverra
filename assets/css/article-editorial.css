@@ -651,3 +651,11 @@ main.container > .breadcrumb {
     width: 100%;
   }
 }
+.site-header .site-nav a {
+  transition: color 180ms ease, background-color 180ms ease;
+}
+.site-header .site-nav a:hover,
+.site-header .site-nav a:focus-visible {
+  color: #b8944f;
+  background-color: rgba(184, 148, 79, 0.11);
+}
