@@ -306,6 +306,18 @@ main.container > .breadcrumb {
   box-shadow: none;
 }
 
+.editorial-body .faq-section summary {
+  color: #3f3a34;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+.editorial-body .faq-section details p {
+  color: #5f5951;
+  font-weight: 400;
+}
+
 .editorial-body .article-cta {
   margin-top: 68px;
   padding: 31px 34px;
@@ -320,7 +332,17 @@ main.container > .breadcrumb {
   margin-bottom: 10px;
   padding: 0;
   border: 0;
+  color: #3f3a34;
+  font-family: inherit;
   font-size: 25px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.editorial-body .article-cta p {
+  color: #5f5951;
+  font-weight: 400;
 }
 
 .editorial-body .cta-actions {
@@ -338,6 +360,8 @@ main.container > .breadcrumb {
   padding: 13px 20px;
   border-radius: 0;
   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .editorial-body .share-box,
@@ -361,9 +385,12 @@ main.container > .breadcrumb {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: Georgia, "Yu Mincho", serif;
+  color: #3f3a34;
+  font-family: inherit;
   font-size: 18px;
   font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
 }
 
 .editorial-body .share-buttons,
@@ -391,8 +418,22 @@ main.container > .breadcrumb {
   padding: 18px;
   border: 1px solid var(--article-line);
   border-radius: 0;
+  color: #3f3a34;
   background: transparent;
   box-shadow: none;
+}
+
+.editorial-body .post-nav span,
+.editorial-main > .post-nav span {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.editorial-body .post-nav strong,
+.editorial-main > .post-nav strong {
+  font-weight: 600;
+  line-height: 1.75;
+  letter-spacing: 0;
 }
 
 /* Related content is always after the article, never fixed on the right */
