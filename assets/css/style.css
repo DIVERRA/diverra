@@ -4581,3 +4581,5 @@ body.home-page.sample-home-page footer .footer-mark strong {
     width: 100%;
   }
 }
+.site-header .site-nav a{font-weight:500}
+.site-header .site-nav a:hover{color:#26211b;background:transparent;transform:none;box-shadow:none}
