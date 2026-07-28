@@ -4395,3 +4395,189 @@ body.home-page.sample-home-page footer .footer-mark strong {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Article pages: calm, centered editorial layout */
+.article-template {
+  width: min(100%, 900px);
+  margin-inline: auto;
+}
+
+.article-template .article-header {
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.article-template .article-header h1 {
+  max-width: 20em;
+  font-size: clamp(2rem, 4.2vw, 3.35rem);
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.article-template .article-image-frame {
+  margin: clamp(1.25rem, 4vw, 2.5rem) 0 0;
+  border-radius: 10px;
+}
+
+.article-template .lead {
+  max-width: 46em;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.9;
+}
+
+.article-template .article-page-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  margin-top: 0;
+}
+
+.article-template .toc-box {
+  margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.article-template .toc-box h2 {
+  font-size: 1.15rem;
+}
+
+.article-template .toc-box ol {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2rem;
+  row-gap: 0.55rem;
+}
+
+.article-template .toc-box a {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.article-template .article-body {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.article-template .article-body h2 {
+  padding: 0 0 0.65rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  line-height: 1.5;
+}
+
+.article-template .article-body h3 {
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  line-height: 1.6;
+}
+
+.article-template .article-cta,
+.article-template .share-box,
+.article-template .post-nav {
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.article-template .article-cta {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.article-template .article-cta .button,
+.article-template .share-buttons .button {
+  min-width: 0;
+  width: auto;
+  padding-inline: 1.3rem;
+}
+
+.article-template .share-box {
+  padding: 1.25rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+}
+
+.article-template .post-nav {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.article-template .post-nav a {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.article-template .article-sidebar {
+  position: static;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.article-template .article-sidebar::before {
+  content: "関連記事";
+  grid-column: 1 / -1;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 900;
+}
+
+.article-template .sidebar-box {
+  position: static;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.article-template .sidebar-box h2 {
+  font-size: 1.05rem;
+}
+
+.article-template .sidebar-box .link-list a {
+  min-height: 0;
+  padding: 0.75rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-text);
+}
+
+.article-template .sidebar-box .link-list a:hover {
+  color: var(--color-primary);
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .article-template .article-header h1 {
+    font-size: clamp(1.85rem, 8.5vw, 2.55rem);
+  }
+
+  .article-template .toc-box ol,
+  .article-template .post-nav,
+  .article-template .article-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .article-template .article-cta .button,
+  .article-template .share-buttons .button {
+    width: 100%;
+  }
+}
