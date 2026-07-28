@@ -10,5 +10,38 @@
     "thumbnail": "assets/images/thailand-cash-guide-thumbnail.webp",
     "url": "thailand-how-much-cash/index.html",
     "alt": "タイ旅行で現金はいくら必要？日数別の目安と賢い両替方法"
+  },
+  {
+    "title": "Klookとは？安全性・口コミ・評判を徹底解説",
+    "description": "Klookの安全性、口コミ・評判、キャンセル条件、他社サービスとの違いを初心者向けに整理します。",
+    "date": "2026-07-19",
+    "dateLabel": "2026.07.19 更新",
+    "category": "TRAVEL",
+    "readingTime": "読了 10分",
+    "thumbnail": "assets/images/klook-review-safety/klook-review-safety-thumbnail.webp",
+    "url": "klook-review-safety/index.html",
+    "alt": "Klookの安全性・口コミ・評判を解説する記事"
+  },
+  {
+    "title": "タイ旅行でチップは必要？相場と渡す場面を解説",
+    "description": "ホテル・マッサージ・レストラン・Grabなど、タイ旅行で迷いやすいチップ相場を解説します。",
+    "date": "2026-07-17",
+    "dateLabel": "2026.07.17 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 8分",
+    "thumbnail": "assets/images/thailand-tipping-guide/thailand-tipping-guide-thumbnail.webp",
+    "url": "thailand-tipping-guide/index.html",
+    "alt": "タイ旅行のチップ相場を解説する記事"
+  },
+  {
+    "title": "Trip.comは危ない？口コミ・評判と安全性を解説",
+    "description": "Trip.comの安全性、口コミ、メリット・デメリット、予約前の注意点を初心者向けに解説します。",
+    "date": "2026-07-15",
+    "dateLabel": "2026.07.15 更新",
+    "category": "TRAVEL",
+    "readingTime": "読了 10分",
+    "thumbnail": "assets/images/trip-com-review/trip-com-review-thumbnail.webp",
+    "url": "trip-com-review/index.html",
+    "alt": "Trip.comの口コミ・評判と安全性を解説する記事"
   }
 ]

@@ -14,3 +14,85 @@
 .featured-thumbnail:hover img {
   transform: scale(1.02);
 }
+
+.featured-read-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 13px 20px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.latest-stories {
+  padding-top: 48px;
+}
+
+.latest-stories-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.latest-stories-heading .eyebrow {
+  margin: 0;
+}
+
+.latest-stories-heading h3 {
+  margin: 0;
+  font: 500 26px Georgia, "Yu Mincho", serif;
+}
+
+.latest-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.latest-story-card {
+  min-width: 0;
+}
+
+.latest-story-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.latest-story-body {
+  display: block;
+  padding-top: 13px;
+}
+
+.latest-story-body small {
+  display: block;
+  margin-bottom: 7px;
+  color: #7c7468;
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+.latest-story-body strong {
+  display: block;
+  font: 500 18px/1.5 Georgia, "Yu Mincho", serif;
+}
+
+@media (max-width: 900px) {
+  .latest-stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-story-card {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+  }
+
+  .latest-story-body {
+    padding-top: 0;
+  }
+}

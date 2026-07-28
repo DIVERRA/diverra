@@ -142,20 +142,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     const articles = await response.json();
     if (!Array.isArray(articles) || articles.length === 0) return;
 
-    const latest = [...articles].sort(
+    const sortedArticles = [...articles].sort(
       (a, b) => new Date(b.date) - new Date(a.date)
-    )[0];
+    );
+    const latest = sortedArticles[0];
 
     const title = section.querySelector(".article-head h2");
     const description = section.querySelector(".article-head p");
     const meta = section.querySelectorAll(".meta span");
     const currentVisual = section.querySelector(".article-visual");
+    const readButton = section.querySelector(".featured-read-button");
+    const storiesGrid = section.querySelector(".latest-stories-grid");
 
     if (title) title.innerHTML = latest.titleHtml || latest.title;
     if (description) description.textContent = latest.description;
     if (meta[0]) meta[0].textContent = latest.category;
     if (meta[1]) meta[1].textContent = latest.dateLabel;
     if (meta[2]) meta[2].textContent = latest.readingTime;
+    if (readButton) readButton.href = latest.url;
 
     if (currentVisual) {
       const thumbnailLink = document.createElement("a");
@@ -173,6 +177,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       thumbnailLink.appendChild(thumbnail);
       currentVisual.replaceWith(thumbnailLink);
+    }
+
+    if (storiesGrid) {
+      const stories = sortedArticles.slice(1, 4);
+      storiesGrid.replaceChildren();
+
+      stories.forEach((story) => {
+        const card = document.createElement("a");
+        card.className = "latest-story-card";
+        card.href = story.url;
+
+        const image = document.createElement("img");
+        image.src = story.thumbnail;
+        image.alt = story.alt || story.title;
+        image.loading = "lazy";
+
+        const body = document.createElement("span");
+        body.className = "latest-story-body";
+
+        const metaLine = document.createElement("small");
+        metaLine.textContent = `${story.category} · ${story.dateLabel}`;
+
+        const cardTitle = document.createElement("strong");
+        cardTitle.textContent = story.title;
+
+        body.append(metaLine, cardTitle);
+        card.append(image, body);
+        storiesGrid.appendChild(card);
+      });
     }
   } catch (error) {
     console.error("最新記事を取得できませんでした。", error);
