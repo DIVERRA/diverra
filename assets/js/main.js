@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (storiesGrid) {
-      const stories = sortedArticles.slice(1, 4);
+      const stories = sortedArticles.slice(1);
       storiesGrid.replaceChildren();
 
       stories.forEach((story) => {

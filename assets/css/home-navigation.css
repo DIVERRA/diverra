@@ -5,3 +5,58 @@
 .site-header .site-nav{position:static;display:flex;align-items:center;gap:28px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
 .site-header .site-nav a{padding:0;border:0;border-radius:0;color:var(--ink);background:transparent;font-size:12px;font-weight:500;letter-spacing:.05em;white-space:nowrap}
 @media(max-width:900px){.site-header .nav-toggle{display:grid;margin-left:auto}.site-header .site-nav{position:absolute;z-index:30;top:72px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px 20px 18px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:var(--paper);box-shadow:0 18px 36px rgba(41,37,31,.1)}.site-header .site-nav.is-open{display:flex}.site-header .site-nav a{width:100%;padding:11px 4px;border-bottom:1px solid rgba(222,212,195,.5);font-size:13px;font-weight:500}}
+
+
+/* Compact home footer */
+main > footer {
+  min-height: 100px;
+  padding: 18px clamp(24px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+main > footer .footer-brand {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+main > footer .footer-brand .sunmark {
+  width: 34px;
+  height: 34px;
+}
+
+main > footer .footer-brand b {
+  font-size: 18px;
+}
+
+main > footer .footer-brand small,
+main > footer > p {
+  display: none;
+}
+
+main > footer > div:not(.footer-brand) {
+  justify-content: center;
+  margin: 0;
+}
+
+main > footer > small {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  main > footer {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    padding: 22px 20px;
+  }
+
+  main > footer > div:not(.footer-brand) {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+}

@@ -96,3 +96,94 @@
     padding-top: 0;
   }
 }
+
+
+/* Swipeable latest stories */
+.latest-stories-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.latest-stories-arrow {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #cfc5b4;
+  border-radius: 50%;
+  place-items: center;
+  color: #fff;
+  background: var(--green);
+  font: 500 18px/1 sans-serif;
+  cursor: pointer;
+}
+
+.latest-stories-arrow:disabled {
+  color: #968e82;
+  background: transparent;
+  cursor: default;
+  opacity: .55;
+}
+
+.latest-stories-grid {
+  display: flex;
+  grid-template-columns: none;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+}
+
+.latest-stories-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.latest-story-card {
+  display: block;
+  flex: 0 0 calc((100% - 44px) / 3.25);
+  min-width: 240px;
+  scroll-snap-align: start;
+}
+
+.latest-story-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: #f5f1e9;
+}
+
+.latest-stories-progress {
+  height: 2px;
+  margin-top: 22px;
+  overflow: hidden;
+  background: #ddd5c7;
+}
+
+.latest-stories-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .15s ease-out;
+}
+
+@media (max-width: 900px) {
+  .latest-story-card {
+    display: block;
+    flex-basis: 84%;
+    min-width: 0;
+  }
+
+  .latest-stories-arrow {
+    display: none;
+  }
+
+  .latest-story-body {
+    padding-top: 13px;
+  }
+}

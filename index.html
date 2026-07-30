@@ -19,8 +19,8 @@
   <meta name="twitter:image" content="https://diverra.github.io/diverra/assets/images/diverra-hero-v2.png">
   <link rel="stylesheet" href="assets/css/style.css?v=20260728-unified-nav">
   <link rel="stylesheet" href="assets/css/home-sample-exact.css?v=20260728">
-  <link rel="stylesheet" href="assets/css/featured-article.css?v=20260728-2">
-  <link rel="stylesheet" href="assets/css/home-navigation.css?v=20260728-3">
+  <link rel="stylesheet" href="assets/css/featured-article.css?v=20260730-carousel">
+  <link rel="stylesheet" href="assets/css/home-navigation.css?v=20260730-compact-footer">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -118,8 +118,15 @@
         <div class="article-visual"><span>THAILAND</span><strong>現金はいくら<br>必要？</strong><small>旅の予算を、出発前に整える。</small></div>
       </div>
       <div class="latest-stories">
-        <div class="latest-stories-heading"><p class="eyebrow">LATEST STORIES</p><h3>新着記事</h3></div>
-        <div class="latest-stories-grid" aria-live="polite"></div>
+        <div class="latest-stories-heading">
+          <div><p class="eyebrow">LATEST STORIES</p><h3>記事一覧</h3></div>
+          <div class="latest-stories-controls" aria-label="記事一覧の操作">
+            <button class="latest-stories-arrow is-prev" type="button" aria-label="前の記事を見る">←</button>
+            <button class="latest-stories-arrow is-next" type="button" aria-label="次の記事を見る">→</button>
+          </div>
+        </div>
+        <div class="latest-stories-grid" aria-live="polite" tabindex="0"></div>
+        <div class="latest-stories-progress" aria-hidden="true"><span></span></div>
       </div>
     </section>
 
@@ -130,6 +137,7 @@
       <small>DESIGN SAMPLE · 2026 DIVERRA</small>
     </footer>
   </main>
-  <script src="assets/js/main.js?v=20260728-nav"></script>
+  <script src="assets/js/main.js?v=20260730-carousel"></script>
+  <script src="assets/js/article-carousel.js?v=20260730"></script>
 </body>
 </html>
