@@ -1,47 +1,145 @@
 [
   {
-    "title": "タイ旅行で現金はいくら必要？日数別の目安と賢い両替方法",
-    "titleHtml": "タイ旅行で現金はいくら必要？<br>日数別の目安と賢い両替方法",
-    "description": "2泊3日・3泊4日・5泊以上の日数別に、現金で持っておきたい金額とカードとの使い分けを分かりやすく解説します。",
+    "title": "【2026年最新版】タイバーツはいくらなら買い？お得なレートの見方・BUY・SELL・両替タイミング完全ガイド",
+    "description": "タイバーツは「4.86円なら高い？安い？」「BUY・SELLはどっちを見る？」など、初めてのタイ旅行では分からないことがたくさんあります。本記事では、日本とタイ現地のレート表示の違い、お得なレートの目安、両替タイミングまで旅行初心者にも分かりやすく解説します。",
     "date": "2026-07-22",
     "dateLabel": "2026.07.22 更新",
     "category": "THAILAND",
-    "readingTime": "読了 8分",
-    "thumbnail": "assets/images/thailand-cash-guide-thumbnail.webp",
-    "url": "thailand-how-much-cash/index.html",
-    "alt": "タイ旅行で現金はいくら必要？日数別の目安と賢い両替方法"
+    "readingTime": "読了 12分",
+    "thumbnail": "assets/images/thailand-baht-exchange-rate-guide/thailand-baht-exchange-rate-guide-thumbnail.webp",
+    "url": "thailand-baht-exchange-rate-guide/index.html",
+    "alt": "【2026年最新版】タイバーツはいくらなら買い？お得なレートの見方・BUY・SELL・両替タイミング完全ガイド"
   },
   {
-    "title": "Klookとは？安全性・口コミ・評判を徹底解説",
-    "description": "Klookの安全性、口コミ・評判、キャンセル条件、他社サービスとの違いを初心者向けに整理します。",
+    "title": "【2026年最新版】Klookとは？安全性・口コミ・評判を徹底解説｜初めてでも安心して使える？",
+    "description": "Klook（クルック）は安全に利用できる旅行予約サイトなのでしょうか。本記事では運営会社、安全性、口コミ・評判、キャンセル・返金、Trip.com・KKdayとの違い、おすすめな人まで公式情報をもとに詳しく解説します。",
     "date": "2026-07-19",
     "dateLabel": "2026.07.19 更新",
     "category": "TRAVEL",
-    "readingTime": "読了 10分",
+    "readingTime": "読了 9分",
     "thumbnail": "assets/images/klook-review-safety/klook-review-safety-thumbnail.webp",
     "url": "klook-review-safety/index.html",
-    "alt": "Klookの安全性・口コミ・評判を解説する記事"
+    "alt": "【2026年最新版】Klookとは？安全性・口コミ・評判を徹底解説｜初めてでも安心して使える？"
   },
   {
-    "title": "タイ旅行でチップは必要？相場と渡す場面を解説",
-    "description": "ホテル・マッサージ・レストラン・Grabなど、タイ旅行で迷いやすいチップ相場を解説します。",
+    "title": "タイ旅行でチップは必要？相場・渡す場面・渡さなくていい場面【2026年最新版】",
+    "description": "タイ旅行でチップは必要？ホテル・マッサージ・レストラン・Grabなどシーン別の相場や、渡さなくても良い場面を分かりやすく解説します。",
     "date": "2026-07-17",
     "dateLabel": "2026.07.17 更新",
     "category": "THAILAND",
     "readingTime": "読了 8分",
     "thumbnail": "assets/images/thailand-tipping-guide/thailand-tipping-guide-thumbnail.webp",
     "url": "thailand-tipping-guide/index.html",
-    "alt": "タイ旅行のチップ相場を解説する記事"
+    "alt": "タイ旅行でチップは必要？相場・渡す場面・渡さなくていい場面【2026年最新版】"
   },
   {
-    "title": "Trip.comは危ない？口コミ・評判と安全性を解説",
-    "description": "Trip.comの安全性、口コミ、メリット・デメリット、予約前の注意点を初心者向けに解説します。",
+    "title": "航空券＋ホテルはセット予約と別々予約どっちがお得？料金差・キャンセル・ポイントを比較【2026年上半期版】",
+    "description": "航空券とホテルはセット予約と別々予約のどちらがお得？Trip.com・Expedia・Agoda・Booking.comの公式情報をもとに、料金・キャンセル・ポイント・マイル・自由度を比較。タイ旅行を計画中の方にも役立つ選び方を詳しく解説します。",
+    "date": "2026-07-16",
+    "dateLabel": "2026.07.16 更新",
+    "category": "TRAVEL",
+    "readingTime": "読了 10分",
+    "thumbnail": "assets/images/flight-hotel-package-vs-separate-booking/flight-hotel-package-vs-separate-booking-thumbnail.png",
+    "url": "flight-hotel-package-vs-separate-booking/index.html",
+    "alt": "航空券＋ホテルはセット予約と別々予約どっちがお得？料金差・キャンセル・ポイントを比較【2026年上半期版】"
+  },
+  {
+    "title": "Trip.comは危ない？口コミ・評判を徹底調査！安全性やメリット・デメリットを本音で解説【2026年最新版】",
+    "description": "Trip.comは危ない？口コミ・評判、安全性、詐欺ではない理由、メリット・デメリット、Agoda・Booking.com・Klookとの違いまで、公式情報と公開口コミをもとに初心者向けに解説します。",
     "date": "2026-07-15",
     "dateLabel": "2026.07.15 更新",
     "category": "TRAVEL",
-    "readingTime": "読了 10分",
+    "readingTime": "読了 8分",
     "thumbnail": "assets/images/trip-com-review/trip-com-review-thumbnail.webp",
     "url": "trip-com-review/index.html",
-    "alt": "Trip.comの口コミ・評判と安全性を解説する記事"
+    "alt": "Trip.comは危ない？口コミ・評判を徹底調査！安全性やメリット・デメリットを本音で解説【2026年最新版】"
+  },
+  {
+    "title": "タイでデータローミングは使うべき？主要5キャリア比較と旅行者におすすめの選び方【2026年最新版】",
+    "description": "タイ旅行でデータローミングは使うべき？ドコモ・au・ソフトバンク・ahamo・楽天モバイルの料金や特徴を比較し、eSIMとの違い、旅行日数別の選び方、出発前の確認事項まで分かりやすく解説します。",
+    "date": "2026-07-13",
+    "dateLabel": "2026.07.13 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 13分",
+    "thumbnail": "assets/images/thailand-data-roaming/thumbnail-thailand-data-roaming.png",
+    "url": "thailand-data-roaming/index.html",
+    "alt": "タイでデータローミングは使うべき？主要5キャリア比較と旅行者におすすめの選び方【2026年最新版】"
+  },
+  {
+    "title": "タイ旅行でクレジットカードは使える？現金との使い分けとおすすめの支払い方法【2026年最新版】",
+    "description": "タイ旅行ではクレジットカードは使える？現金はどれくらい必要？ホテル・屋台・コンビニ・ショッピングモールなど利用シーン別に、タイ旅行でおすすめの支払い方法を詳しく解説します。",
+    "date": "2026-07-12",
+    "dateLabel": "2026.07.12 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 12分",
+    "thumbnail": "assets/images/thailand-credit-card-payment-guide-hero.webp",
+    "url": "thailand-credit-card/index.html",
+    "alt": "タイ旅行でクレジットカードは使える？現金との使い分けとおすすめの支払い方法【2026年最新版】"
+  },
+  {
+    "title": "円安なのにタイ旅行は高い？韓国旅行は変わらない？最新為替データで理由を徹底解説【2026年版】",
+    "description": "円安なのに韓国旅行はそれほど高く感じない一方、タイ旅行は以前より予算が必要と言われるのはなぜ？最新の為替データをもとに、タイバーツ・韓国ウォンの違いや旅行前に確認すべきレートをわかりやすく解説します。",
+    "date": "2026-07-11",
+    "dateLabel": "2026.07.11 更新",
+    "category": "TRAVEL",
+    "readingTime": "読了 10分",
+    "thumbnail": "assets/images/thailand-korea-exchange-rate-travel-cost-hero.webp",
+    "url": "why-thailand-trip-expensive-baht-won-exchange-rate/index.html",
+    "alt": "円安なのにタイ旅行は高い？韓国旅行は変わらない？最新為替データで理由を徹底解説【2026年版】"
+  },
+  {
+    "title": "【2026年最新版】タイ旅行の入国条件・ビザ完全ガイド｜TDAC登録・必要書類・入国審査まで徹底解説",
+    "description": "タイ旅行にビザは必要？2026年最新の入国条件、ビザ免除期間の変更、TDAC（タイデジタル到着カード）の登録方法、必要書類、入国審査まで初心者向けにわかりやすく解説します。",
+    "date": "2026-07-09",
+    "dateLabel": "2026.07.09 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 16分",
+    "thumbnail": "assets/images/thailand-entry-visa-hero.webp",
+    "url": "thailand-entry-visa/index.html",
+    "alt": "【2026年最新版】タイ旅行の入国条件・ビザ完全ガイド｜TDAC登録・必要書類・入国審査まで徹底解説"
+  },
+  {
+    "title": "タイでおすすめの両替所5選｜バンコクでレートが良い人気店を比較【2026年最新版】",
+    "description": "タイ・バンコクでおすすめの両替所5選を初心者向けに比較。SuperRich Thailand、SuperRich 1965、VASU Exchange、Siam Exchange、X-One Currency Exchangeの特徴や空港両替のコツ、注意点を解説します。",
+    "date": "2026-07-08",
+    "dateLabel": "2026.07.08 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 9分",
+    "thumbnail": "assets/images/thailand-best-money-exchange-hero.webp",
+    "url": "thailand-best-money-exchange/index.html",
+    "alt": "タイでおすすめの両替所5選｜バンコクでレートが良い人気店を比較【2026年最新版】"
+  },
+  {
+    "title": "タイ旅行で現金はいくら必要？2泊3日・3泊4日・5泊7日の目安と賢い両替方法【2026年最新版】",
+    "description": "タイ旅行では現金をいくら持っていけば安心？日数別の目安に加え、PromptPayやApple Payが使えない事情、現金の持ち込み・持ち出し上限額まで、初心者向けにわかりやすく解説します。",
+    "date": "2026-07-07",
+    "dateLabel": "2026.07.07 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 14分",
+    "thumbnail": "assets/images/thailand-cash-guide-thumbnail.webp",
+    "url": "thailand-how-much-cash/index.html",
+    "alt": "タイ旅行で現金はいくら必要？2泊3日・3泊4日・5泊7日の目安と賢い両替方法【2026年最新版】"
+  },
+  {
+    "title": "【2026年最新】タイ旅行のATM手数料を無料にする方法｜Cashmallow（キャッシュマロウ）徹底解説",
+    "description": "タイ旅行のATM手数料220〜250バーツを節約する方法を解説。Cashmallowの仕組みや使い方、Wise・Revolutとの違い、メリット・デメリットまで詳しく紹介します。",
+    "date": "2026-07-06",
+    "dateLabel": "2026.07.06 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 12分",
+    "thumbnail": "assets/images/cashmallow-hero.webp",
+    "url": "thailand-atm-fee-cashmallow/index.html",
+    "alt": "【2026年最新】タイ旅行のATM手数料を無料にする方法｜Cashmallow（キャッシュマロウ）徹底解説"
+  },
+  {
+    "title": "タイ旅行の両替は日本と現地どっちがお得？初心者におすすめの方法を徹底解説【2026年最新版】",
+    "description": "タイ旅行では日本と現地、どちらで両替するのがお得？空港・市内・ATM・クレジットカードの違いや、旅行初心者におすすめの両替方法をわかりやすく解説します。",
+    "date": "2026-07-05",
+    "dateLabel": "2026.07.05 更新",
+    "category": "THAILAND",
+    "readingTime": "読了 12分",
+    "thumbnail": "assets/images/thailand-exchange-japan-or-local-thumbnail.jpg",
+    "url": "thailand-exchange-japan-or-local/index.html",
+    "alt": "タイ旅行の両替は日本と現地どっちがお得？初心者におすすめの方法を徹底解説【2026年最新版】"
   }
 ]
