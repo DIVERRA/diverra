@@ -182,10 +182,16 @@ def build_article(article):
     hero = soup.select_one(".article-hero-image")
 
     if hero:
-        hero["src"] = f"../{metadata['thumbnail']}"
+        hero["src"] = f"/{metadata['thumbnail']}"
         hero["alt"] = metadata["thumbnail_alt"]
         hero.attrs.pop("width", None)
         hero.attrs.pop("height", None)
+
+        picture = hero.find_parent("picture")
+
+        if picture:
+            for source in picture.find_all("source"):
+                source.decompose()
 
     tag = soup.select_one(".article-meta .tag")
 
