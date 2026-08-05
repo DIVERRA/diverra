@@ -1,11 +1,18 @@
 import type { Config, Context } from "@netlify/functions";
 import { getUser } from "@netlify/identity";
 
+type ThumbnailInput = {
+  name?: string;
+  type?: string;
+  data?: string;
+};
+
 type DraftInput = {
   title?: string;
   description?: string;
   category?: string;
   body?: string;
+  thumbnail?: ThumbnailInput | null;
 };
 
 const allowedCategories = new Set([
@@ -14,6 +21,12 @@ const allowedCategories = new Set([
   "TAIWAN",
   "TRAVEL",
 ]);
+
+const imageExtensions: Record<string, string> = {
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/webp": "webp",
+};
 
 const yamlString = (value: string) => JSON.stringify(value);
 
@@ -24,6 +37,13 @@ const japanDate = () =>
     month: "2-digit",
     day: "2-digit",
   }).format(new Date());
+
+const githubHeaders = (token: string) => ({
+  Accept: "application/vnd.github+json",
+  Authorization: `Bearer ${token}`,
+  "Content-Type": "application/json",
+  "X-GitHub-Api-Version": "2026-03-10",
+});
 
 export default async (request: Request, _context: Context) => {
   if (request.method !== "POST") {
@@ -77,6 +97,41 @@ export default async (request: Request, _context: Context) => {
     );
   }
 
+  const thumbnailName =
+    input.thumbnail?.name?.trim().toLowerCase() ?? "";
+  const suppliedThumbnailType =
+    input.thumbnail?.type?.trim().toLowerCase() ?? "";
+  const inferredThumbnailType =
+    thumbnailName.endsWith(".png")
+      ? "image/png"
+      : thumbnailName.endsWith(".jpg") ||
+          thumbnailName.endsWith(".jpeg")
+        ? "image/jpeg"
+        : thumbnailName.endsWith(".webp")
+          ? "image/webp"
+          : "";
+  const thumbnailType =
+    suppliedThumbnailType || inferredThumbnailType;
+  const thumbnailData = input.thumbnail?.data ?? "";
+  const hasThumbnail = Boolean(thumbnailData);
+
+  if (
+    hasThumbnail &&
+    (
+      !imageExtensions[thumbnailType] ||
+      thumbnailData.length > 5600000 ||
+      !/^[A-Za-z0-9+/=]+$/.test(thumbnailData)
+    )
+  ) {
+    return Response.json(
+      {
+        ok: false,
+        message: "サムネイルは4MB以内のPNG・JPEG・WebPを選択してください",
+      },
+      { status: 400 },
+    );
+  }
+
   const token = Netlify.env.get("DIVERRA_GITHUB_TOKEN");
   const owner = Netlify.env.get("DIVERRA_GITHUB_OWNER");
   const repo = Netlify.env.get("DIVERRA_GITHUB_REPO");
@@ -98,6 +153,37 @@ export default async (request: Request, _context: Context) => {
   const readingTime = Math.max(1, Math.ceil(body.length / 500));
   const country = category === "TRAVEL" ? "GLOBAL" : category;
 
+  let thumbnailPath = "assets/images/diverra-hero-v2.png";
+
+  if (hasThumbnail) {
+    const extension = imageExtensions[thumbnailType];
+    thumbnailPath = `assets/images/editorial/${slug}.${extension}`;
+
+    const imageResponse = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/${thumbnailPath}`,
+      {
+        method: "PUT",
+        headers: githubHeaders(token),
+        body: JSON.stringify({
+          message: `Upload editorial thumbnail: ${title}`,
+          content: thumbnailData,
+          branch,
+        }),
+      },
+    );
+
+    if (!imageResponse.ok) {
+      return Response.json(
+        {
+          ok: false,
+          message: "サムネイルをGitHubへ保存できませんでした",
+          githubStatus: imageResponse.status,
+        },
+        { status: 502 },
+      );
+    }
+  }
+
   const markdown = `---
 title: ${yamlString(title)}
 description: ${yamlString(description)}
@@ -107,7 +193,7 @@ modified: ${date}
 category: ${category}
 country: ${country}
 reading_time: ${readingTime}
-thumbnail: assets/images/diverra-hero-v2.png
+thumbnail: ${thumbnailPath}
 thumbnail_alt: ${yamlString(`${title}のアイキャッチ画像`)}
 keywords:
   - ${category}
@@ -124,12 +210,7 @@ ${body}
     `https://api.github.com/repos/${owner}/${repo}/contents/${articlePath}`,
     {
       method: "PUT",
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "X-GitHub-Api-Version": "2026-03-10",
-      },
+      headers: githubHeaders(token),
       body: JSON.stringify({
         message: `Save editorial draft: ${title}`,
         content: Buffer.from(markdown, "utf8").toString("base64"),
@@ -149,14 +230,15 @@ ${body}
     );
   }
 
-  const result = await githubResponse.json();
-
   return Response.json({
     ok: true,
-    message: "下書きを検証用ブランチへ保存しました",
+    message: hasThumbnail
+      ? "画像付き下書きを検証用ブランチへ保存しました"
+      : "下書きを保存しましたが、画像は送信されていません",
     slug,
     path: articlePath,
-    commitUrl: result.commit?.html_url ?? null,
+    thumbnail: thumbnailPath,
+    thumbnailSaved: hasThumbnail,
   });
 };
 

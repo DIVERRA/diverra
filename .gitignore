@@ -11,3 +11,6 @@ preview/*
 # Admin local dependencies and build output
 admin/node_modules/
 admin/dist/
+
+# Generated Netlify preview
+preview-deploy/

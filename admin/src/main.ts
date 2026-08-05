@@ -370,11 +370,57 @@ function renderEditor() {
         document.querySelector<HTMLSelectElement>("#category")?.value ?? "";
       const body =
         document.querySelector<HTMLTextAreaElement>("#body")?.value ?? "";
+      const thumbnailFile =
+        document.querySelector<HTMLInputElement>("#thumbnail")
+          ?.files?.[0] ?? null;
+
+      if (
+        thumbnailFile &&
+        thumbnailFile.size > 4 * 1024 * 1024
+      ) {
+        if (status) {
+          status.textContent =
+            "サムネイルは4MB以内の画像を選択してください。";
+        }
+        return;
+      }
 
       if (button) button.disabled = true;
       if (status) status.textContent = "下書きを保存しています…";
 
       try {
+        const thumbnail = thumbnailFile
+          ? await new Promise<{
+              name: string;
+              type: string;
+              data: string;
+            }>((resolve, reject) => {
+              const reader = new FileReader();
+
+              reader.addEventListener("load", () => {
+                const result = String(reader.result ?? "");
+                const data = result.split(",", 2)[1];
+
+                if (!data) {
+                  reject(new Error("画像を読み取れませんでした"));
+                  return;
+                }
+
+                resolve({
+                  name: thumbnailFile.name,
+                  type: thumbnailFile.type,
+                  data,
+                });
+              });
+
+              reader.addEventListener("error", () => {
+                reject(new Error("画像を読み取れませんでした"));
+              });
+
+              reader.readAsDataURL(thumbnailFile);
+            })
+          : null;
+
         const response = await fetch("/api/save-draft", {
           method: "POST",
           credentials: "include",
@@ -386,6 +432,7 @@ function renderEditor() {
             description,
             category,
             body,
+            thumbnail,
           }),
         });
 
@@ -397,7 +444,7 @@ function renderEditor() {
 
         if (status) {
           status.textContent =
-            "下書きを検証用ブランチへ保存しました。公開サイトは変更していません。";
+            `${result.message}。公開サイトは変更していません。`;
         }
       } catch (error) {
         console.error("下書き保存エラー", error);
