@@ -354,10 +354,61 @@ function renderEditor() {
 
   document
     .querySelector<HTMLButtonElement>("#draft-button")
-    ?.addEventListener("click", () => {
-      if (status) {
-        status.textContent =
-          "画面の表示テストは正常です。保存処理は次に接続します。";
+    ?.addEventListener("click", async () => {
+      const form =
+        document.querySelector<HTMLFormElement>("#article-form");
+      const button =
+        document.querySelector<HTMLButtonElement>("#draft-button");
+
+      if (!form || !form.reportValidity()) return;
+
+      const title =
+        document.querySelector<HTMLInputElement>("#title")?.value ?? "";
+      const description =
+        document.querySelector<HTMLTextAreaElement>("#description")?.value ?? "";
+      const category =
+        document.querySelector<HTMLSelectElement>("#category")?.value ?? "";
+      const body =
+        document.querySelector<HTMLTextAreaElement>("#body")?.value ?? "";
+
+      if (button) button.disabled = true;
+      if (status) status.textContent = "下書きを保存しています…";
+
+      try {
+        const response = await fetch("/api/save-draft", {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            description,
+            category,
+            body,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.message ?? "保存に失敗しました");
+        }
+
+        if (status) {
+          status.textContent =
+            "下書きを検証用ブランチへ保存しました。公開サイトは変更していません。";
+        }
+      } catch (error) {
+        console.error("下書き保存エラー", error);
+        if (status) {
+          status.textContent =
+            error instanceof Error
+              ? `保存エラー：${error.message}`
+              : "下書きを保存できませんでした。";
+        }
+      } finally {
+        if (button) button.disabled = false;
       }
     });
 
