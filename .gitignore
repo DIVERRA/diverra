@@ -1,3 +1,19 @@
 .DS_Store
 outputs/
 work/
+.venv/
+preview/*
+!preview/.gitkeep
+
+# Local Netlify folder
+.netlify
+
+# Admin local dependencies and build output
+admin/node_modules/
+admin/dist/
+
+# Generated Netlify preview
+preview-deploy/
+
+# Generated release artifacts
+release/
