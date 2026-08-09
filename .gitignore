@@ -14,3 +14,6 @@ admin/dist/
 
 # Generated Netlify preview
 preview-deploy/
+
+# Generated release artifacts
+release/
