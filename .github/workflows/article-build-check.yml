@@ -49,3 +49,23 @@ jobs:
           name: article-preview
           path: preview/
           if-no-files-found: error
+
+      - name: Select latest editorial draft
+        id: release
+        shell: bash
+        run: |
+          ARTICLE_PATH="$(git log -1 --format= --name-only -- 'content/articles/*.md' | sed '/^$/d' | head -1)"
+          test -n "$ARTICLE_PATH"
+          SLUG="$(sed -n 's/^slug:[[:space:]]*//p' "$ARTICLE_PATH" | head -1 | tr -d '"')"
+          test -n "$SLUG"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare production release artifact
+        run: python scripts/prepare_article_release.py "${{ steps.release.outputs.slug }}"
+
+      - name: Upload production release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: article-release-${{ steps.release.outputs.slug }}
+          path: release/
+          if-no-files-found: error
