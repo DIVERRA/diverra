@@ -442,10 +442,19 @@ function renderEditor() {
           throw new Error(result.message ?? "保存に失敗しました");
         }
 
-        if (status) {
-          status.textContent =
-            `${result.message}。公開サイトは変更していません。`;
-        }
+        if (typeof result.slug !== "string" || !result.slug) {
+      throw new Error("プレビューURLを作成できませんでした");
+    }
+
+    const previewUrl =
+      `https://diverra-article-preview.netlify.app/preview/${encodeURIComponent(result.slug)}/`;
+
+    localStorage.setItem("diverraLastPreviewUrl", previewUrl);
+
+    if (status) {
+      status.textContent =
+        `${result.message}。公開前確認は反映まで1〜2分お待ちください。`;
+    }
       } catch (error) {
         console.error("下書き保存エラー", error);
         if (status) {
@@ -462,10 +471,22 @@ function renderEditor() {
   document
     .querySelector<HTMLButtonElement>("#publish-button")
     ?.addEventListener("click", () => {
-      if (status) {
-        status.textContent =
-          "公開前確認画面は次の工程で接続します。";
+      const previewUrl =
+        localStorage.getItem("diverraLastPreviewUrl");
+
+      if (!previewUrl) {
+        if (status) {
+          status.textContent =
+            "先に下書き保存を行ってください。";
+        }
+        return;
       }
+
+      window.open(
+        previewUrl,
+        "_blank",
+        "noopener,noreferrer",
+      );
     });
 }
 
