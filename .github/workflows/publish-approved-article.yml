@@ -1,0 +1,98 @@
+name: Publish approved article
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "公開する記事URL"
+        required: true
+        type: string
+      confirmation:
+        description: "PUBLISH と入力"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-approved-article
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Confirm publication
+        run: test "${{ inputs.confirmation }}" = "PUBLISH"
+
+      - name: Checkout public site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: public
+          fetch-depth: 0
+
+      - name: Checkout editorial source
+        uses: actions/checkout@v4
+        with:
+          ref: feature/article-generator-foundation
+          path: source
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: source/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r source/requirements.txt
+
+      - name: Prevent duplicate publication
+        run: test ! -e "public/${{ inputs.slug }}/index.html"
+
+      - name: Sync current public indexes
+        run: |
+          cp public/assets/data/articles.json source/assets/data/articles.json
+          cp public/sitemap.xml source/sitemap.xml
+
+      - name: Validate article data
+        working-directory: source
+        run: python scripts/validate_articles.py
+
+      - name: Prepare approved article
+        working-directory: source
+        run: python scripts/prepare_article_release.py "${{ inputs.slug }}"
+
+      - name: Copy approved release
+        run: |
+          test -f "source/release/${{ inputs.slug }}/index.html"
+          cp -R source/release/. public/
+
+      - name: Commit approved article
+        working-directory: public
+        run: |
+          SLUG="${{ inputs.slug }}"
+          ARTICLE="content/articles/$SLUG.md"
+          THUMBNAIL="$(sed -n 's/^thumbnail:[[:space:]]*//p' "$ARTICLE" | head -1 | tr -d '"')"
+
+          git add \
+            "$SLUG/index.html" \
+            "$ARTICLE" \
+            assets/data/articles.json \
+            sitemap.xml
+
+          if [ -n "$THUMBNAIL" ] && [ -f "$THUMBNAIL" ]; then
+            git add "$THUMBNAIL"
+          fi
+
+          git diff --cached --check
+          git diff --cached --quiet && exit 1
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish article: $SLUG"
+          git push origin HEAD:main
