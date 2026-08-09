@@ -50,7 +50,7 @@ jobs:
         with:
           name: article-preview
           path: preview/
-          if-no-files-found: error
+          if-no-files-found: warn
 
       - name: Select latest editorial draft
         id: release
@@ -62,15 +62,21 @@ jobs:
               printf '%s\t%s\n' "$(git log -1 --format=%ct -- "$file")" "$file"
             done | sort -k1,1nr -k2,2r | head -1 | cut -f2-
           )"
-          test -n "$ARTICLE_PATH"
+          if [ -z "$ARTICLE_PATH" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           SLUG="$(sed -n 's/^slug:[[:space:]]*//p' "$ARTICLE_PATH" | head -1 | tr -d '"')"
           test -n "$SLUG"
+          echo "available=true" >> "$GITHUB_OUTPUT"
           echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
 
       - name: Prepare production release artifact
+        if: steps.release.outputs.available == 'true'
         run: python scripts/prepare_article_release.py "${{ steps.release.outputs.slug }}"
 
       - name: Upload production release artifact
+        if: steps.release.outputs.available == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: article-release-${{ steps.release.outputs.slug }}

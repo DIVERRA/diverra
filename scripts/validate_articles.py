@@ -100,9 +100,6 @@ def validate_articles():
             "body": body,
         })
 
-    if not articles:
-        errors.append("記事データがありません")
-
     return articles, errors
 
 if __name__ == "__main__":
