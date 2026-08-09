@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -54,7 +56,12 @@ jobs:
         id: release
         shell: bash
         run: |
-          ARTICLE_PATH="$(git log -1 --format= --name-only -- 'content/articles/*.md' | sed '/^$/d' | head -1)"
+          ARTICLE_PATH="$(
+            for file in content/articles/*.md; do
+              grep -q '^draft: true' "$file" || continue
+              printf '%s\t%s\n' "$(git log -1 --format=%ct -- "$file")" "$file"
+            done | sort -k1,1nr -k2,2r | head -1 | cut -f2-
+          )"
           test -n "$ARTICLE_PATH"
           SLUG="$(sed -n 's/^slug:[[:space:]]*//p' "$ARTICLE_PATH" | head -1 | tr -d '"')"
           test -n "$SLUG"
