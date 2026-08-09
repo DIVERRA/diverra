@@ -285,6 +285,19 @@ function renderEditor() {
           </div>
 
           <div class="field">
+            <label for="slug">記事URL</label>
+            <input
+              id="slug"
+              name="slug"
+              type="text"
+              pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+              placeholder="thailand-airport-transfer-guide"
+              required
+            >
+            <small>英小文字・数字・ハイフンのみ</small>
+          </div>
+
+          <div class="field">
             <label for="description">短い説明文</label>
             <textarea
               id="description"
@@ -364,6 +377,10 @@ function renderEditor() {
 
       const title =
         document.querySelector<HTMLInputElement>("#title")?.value ?? "";
+      const slug =
+        document.querySelector<HTMLInputElement>("#slug")?.value
+          .trim()
+          .toLowerCase() ?? "";
       const description =
         document.querySelector<HTMLTextAreaElement>("#description")?.value ?? "";
       const category =
@@ -429,6 +446,7 @@ function renderEditor() {
           },
           body: JSON.stringify({
             title,
+          slug,
             description,
             category,
             body,

@@ -9,6 +9,7 @@ type ThumbnailInput = {
 
 type DraftInput = {
   title?: string;
+  slug?: string;
   description?: string;
   category?: string;
   body?: string;
@@ -74,11 +75,15 @@ export default async (request: Request, _context: Context) => {
   }
 
   const title = input.title?.trim() ?? "";
+  const requestedSlug =
+    input.slug?.trim().toLowerCase() ?? "";
   const description = input.description?.trim() ?? "";
   const category = input.category?.trim().toUpperCase() ?? "";
   const body = input.body?.trim() ?? "";
 
-  if (!title || !description || !category || !body) {
+  if (
+  !title ||
+  !requestedSlug || !description || !category || !body) {
     return Response.json(
       { ok: false, message: "必須項目をすべて入力してください" },
       { status: 400 },
@@ -87,6 +92,8 @@ export default async (request: Request, _context: Context) => {
 
   if (
     title.length > 180 ||
+  requestedSlug.length > 100 ||
+  !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(requestedSlug) ||
     description.length > 300 ||
     body.length > 100000 ||
     !allowedCategories.has(category)
@@ -144,12 +151,8 @@ export default async (request: Request, _context: Context) => {
     );
   }
 
-  const now = new Date();
   const date = japanDate();
-  const slug = `draft-${date.replaceAll("-", "")}-${now
-    .toISOString()
-    .slice(11, 19)
-    .replaceAll(":", "")}`;
+  const slug = requestedSlug;
   const readingTime = Math.max(1, Math.ceil(body.length / 500));
   const country = category === "TRAVEL" ? "GLOBAL" : category;
 
