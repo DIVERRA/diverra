@@ -345,10 +345,18 @@ function renderEditor() {
             >
               公開前確認
             </button>
+
+            <button
+              class="button button-primary"
+              type="button"
+              id="release-button"
+            >
+              本番公開
+            </button>
           </div>
 
           <p id="article-status" class="status">
-            公開処理は次の工程で接続します。
+            下書き保存後、公開前確認を行ってください。
           </p>
         </form>
       </section>
@@ -468,6 +476,8 @@ function renderEditor() {
       `https://diverra-article-preview.netlify.app/preview/${encodeURIComponent(result.slug)}/`;
 
     localStorage.setItem("diverraLastPreviewUrl", previewUrl);
+    localStorage.setItem("diverraLastDraftSlug", result.slug);
+    localStorage.setItem("diverraPreviewConfirmed", "false");
 
     if (status) {
       status.textContent =
@@ -500,11 +510,86 @@ function renderEditor() {
         return;
       }
 
+      localStorage.setItem("diverraPreviewConfirmed", "true");
+
       window.open(
         previewUrl,
         "_blank",
         "noopener,noreferrer",
       );
+    });
+
+  document
+    .querySelector<HTMLButtonElement>("#release-button")
+    ?.addEventListener("click", async () => {
+      const slug =
+        localStorage.getItem("diverraLastDraftSlug");
+      const previewConfirmed =
+        localStorage.getItem("diverraPreviewConfirmed") === "true";
+      const button =
+        document.querySelector<HTMLButtonElement>("#release-button");
+
+      if (!slug) {
+        if (status) {
+          status.textContent =
+            "先に下書き保存を行ってください。";
+        }
+        return;
+      }
+
+      if (!previewConfirmed) {
+        if (status) {
+          status.textContent =
+            "先に公開前確認を開いてください。";
+        }
+        return;
+      }
+
+      if (!window.confirm(
+        `「${slug}」を本番公開します。よろしいですか？`,
+      )) {
+        return;
+      }
+
+      if (button) button.disabled = true;
+      if (status) {
+        status.textContent = "本番公開を開始しています…";
+      }
+
+      try {
+        const response = await fetch("/api/request-publish", {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ slug }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+          throw new Error(
+            result.message ?? "本番公開を開始できませんでした",
+          );
+        }
+
+        if (status) {
+          status.textContent =
+            "本番公開を開始しました。反映まで1〜2分お待ちください。";
+        }
+      } catch (error) {
+        console.error("本番公開エラー", error);
+
+        if (status) {
+          status.textContent =
+            error instanceof Error
+              ? `公開エラー：${error.message}`
+              : "本番公開を開始できませんでした。";
+        }
+      } finally {
+        if (button) button.disabled = false;
+      }
     });
 }
 
