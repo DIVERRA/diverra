@@ -9,6 +9,7 @@ on:
       - "templates/**"
       - "scripts/**"
       - "requirements.txt"
+      - "admin/**"
       - ".github/workflows/article-build-check.yml"
 
   pull_request:
@@ -19,6 +20,7 @@ on:
       - "templates/**"
       - "scripts/**"
       - "requirements.txt"
+      - "admin/**"
 
 jobs:
   validate-and-build:
@@ -38,6 +40,21 @@ jobs:
 
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: admin/package-lock.json
+
+      - name: Install admin dependencies
+        working-directory: admin
+        run: npm ci
+
+      - name: Build editorial admin
+        working-directory: admin
+        run: npm run build
 
       - name: Validate article data
         run: python scripts/validate_articles.py
