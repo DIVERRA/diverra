@@ -9,6 +9,7 @@ import {
 } from "@netlify/identity";
 
 import "./style.css";
+import { loadDraftList } from "./draft-list";
 
 const app = document.querySelector<HTMLDivElement>("#app");
 
@@ -360,6 +361,14 @@ function renderEditor() {
           </p>
         </form>
       </section>
+
+      <section class="panel">
+        <h2>保存済み下書き</h2>
+        <p id="draft-list-status" class="status">
+          下書きを読み込んでいます…
+        </p>
+        <div id="draft-list" class="draft-list"></div>
+      </section>
     </main>
   `;
 
@@ -372,6 +381,8 @@ function renderEditor() {
 
   const status =
     document.querySelector<HTMLParagraphElement>("#article-status");
+
+  void loadDraftList();
 
   document
     .querySelector<HTMLButtonElement>("#draft-button")

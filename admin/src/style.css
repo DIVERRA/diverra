@@ -156,3 +156,47 @@ button {
     flex: 1;
   }
 }
+
+/* Saved editorial drafts */
+.draft-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.draft-card {
+  padding: 20px;
+  border: 1px solid #ded4c3;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.draft-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.draft-card p {
+  margin: 8px 0;
+  line-height: 1.7;
+}
+
+.draft-meta,
+.draft-slug {
+  color: #71695f;
+  font-size: 13px;
+}
+
+.draft-card .button {
+  display: inline-flex;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+@media (min-width: 760px) {
+  .draft-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
