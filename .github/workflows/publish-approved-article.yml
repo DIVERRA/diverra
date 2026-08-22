@@ -11,6 +11,11 @@ on:
         description: "PUBLISH と入力"
         required: true
         type: string
+      dry_run:
+        description: "公開せずに最終確認だけ行う"
+        required: true
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -72,7 +77,16 @@ jobs:
           test -f "source/release/${{ inputs.slug }}/index.html"
           cp -R source/release/. public/
 
+      - name: Upload dry-run release
+        if: inputs.dry_run == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-article-${{ inputs.slug }}
+          path: source/release/
+          if-no-files-found: error
+
       - name: Commit approved article
+        if: inputs.dry_run == false
         working-directory: public
         run: |
           SLUG="${{ inputs.slug }}"
